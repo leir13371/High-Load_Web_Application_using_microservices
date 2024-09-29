@@ -1,8 +1,6 @@
 # High-Load_Web_Application_using_microservices
 Deployment of a High-Load Web Application Using Kubernetes, Docker, Jenkins, Ansible, Helm, PostgreSQL, Nginx, Kafka, Redis, Grafana, Prometheus
 
-Deployment of a High-Load Web Application Using Kubernetes, Docker, Jenkins, Ansible, Helm, PostgreSQL, Nginx, Kafka, Redis, Grafana, Prometheus
-
 This project sets up a fully scalable, high-performance cloud-native application with multiple services using the following stack:
 
 1)Kubernetes for container orchestration
