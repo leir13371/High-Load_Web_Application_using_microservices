@@ -1,0 +1,55 @@
+Overall Project Structure:
+
+Kubernetes:
+
+Acts as the main platform for container orchestration. All the core components of the application are deployed here.
+The application consists of several microservices, each packaged in Docker containers. Kubernetes manages the deployments, services, and ingresses to ensure scalability and availability.
+Kubernetes services connect containers to each other and to external users via Nginx.
+
+Docker:
+
+All components of the application are packaged into Docker images. This ensures portability and ease of deployment across different environments.
+Docker Compose is used for local development and testing of all microservices before deploying them to Kubernetes.
+
+Jenkins:
+
+Handles the CI/CD pipeline. On each push to GitHub, Jenkins triggers the build of Docker images, runs tests, and deploys the updated images to Kubernetes.
+Jenkins can also trigger Ansible to manage server configurations.
+
+Linux (Ubuntu):
+
+This is the operating system where all project components are deployed. It hosts Jenkins, Docker, and Kubernetes, and is used to run Ansible playbooks.
+
+Ansible:
+
+Used to automate server setup and application deployment.
+Ansible playbooks configure Postgres, Nginx, and Kafka, ensuring that all components are properly configured before being launched.
+
+Helm:
+
+Helm templates Kubernetes manifests, enabling dynamic configuration changes across different environments (e.g., dev, staging, production).
+Helm charts are created for each microservice, simplifying their deployment and version management.
+
+PostgreSQL:
+
+This is the main database used by the application for data storage. It is connected to the microservices through Kubernetes and Ansible, which handle its setup and management.
+
+Nginx:
+
+Serves as a proxy server to handle incoming HTTP requests and distribute them among the microservices.
+Configured by Ansible to support load balancing and HTTPS.
+
+Kafka:
+
+Responsible for message exchange between microservices. For example, one service can publish events while others subscribe to and process them.
+Kafka is deployed in a Docker container and managed through Kubernetes.
+
+Redis:
+
+Used for caching data to reduce the load on the database and improve application performance.
+Redis is deployed in Docker and integrated with the application via Kubernetes.
+
+Grafana and Prometheus:
+
+Prometheus collects metrics from all services and infrastructure components (Kubernetes, Docker, microservices).
+Grafana visualizes these metrics, creating user-friendly dashboards to monitor the system's health and detect issues.
