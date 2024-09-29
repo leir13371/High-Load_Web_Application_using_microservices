@@ -1,0 +1,19 @@
+In our project, Ubuntu will serve as the base operating system where all the services (Kubernetes, Docker, PostgreSQL, Kafka, etc.) will be deployed. For our setup:
+
+sudo apt update
+sudo apt install -y curl git vim wget
+
+
+Install Docker: We will use Docker as the container engine:
+
+sudo apt install -y docker.io
+sudo systemctl enable --now docker
+
+
+Install Kubernetes (kubectl):
+
+sudo apt install -y apt-transport-https ca-certificates curl
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt update
+sudo apt install -y kubectl
