@@ -1,0 +1,8 @@
+nginx-chart/
+├── Chart.yaml         # Chart metadata
+├── values.yaml        # Default configuration values
+├── templates/         # Kubernetes resources
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   ├── ingress.yaml
+└── README.md
