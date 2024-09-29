@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    docker.build("my-microservice:v1.0")
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    kubernetesDeploy(
+                      configs: 'k8s/deployment.yaml', 
+                      kubeconfigId: 'kube-config-id'
+                    )
+                }
+            }
+        }
+    }
+}
